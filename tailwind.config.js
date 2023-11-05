@@ -6,7 +6,11 @@ export default {
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "banner": "url('https://i.ibb.co/5v0FXq6/wood.jpg')",
+      },
+    },
   },
   plugins: [require("flowbite/plugin")],
 };
