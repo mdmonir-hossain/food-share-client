@@ -24,7 +24,8 @@ const Banner = () => {
             <img src="https://i.ibb.co/RHSCYTV/right-side.png" />
           </motion.div>
           <motion.h1
-            className="text-white text-5xl absolute drop-shadow-lg"
+            className="text-white text-xl md:text-3xl lg:text-5xl absolute drop-shadow-lg text-center"
+            style={{textShadow: '2px 2px #000000'}}
             initial={{ opacity: 0, y: 300 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
