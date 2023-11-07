@@ -32,7 +32,7 @@ const Banner = () => {
               delay: 2,
               duration: 2,
               type: "spring",
-              stiffness: 20,
+              stiffness: 50,
             }}
           >
             Community Food Sharing <br />
