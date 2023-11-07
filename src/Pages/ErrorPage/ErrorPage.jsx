@@ -1,10 +1,13 @@
-import React from 'react';
+
+import { Helmet } from 'react-helmet';
 
 const ErrorPage = () => {
     return (
-        <div>
-            
-        </div>
+      <div>
+        <Helmet>
+          <title>404 Not Found</title>
+        </Helmet>
+      </div>
     );
 };
 

@@ -3,6 +3,9 @@ import MainLayout from "../Layout/MainLayout";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import AvailableFoods from "../Pages/AvailableFoods/AvailableFoods";
+import AddFood from "../Pages/AddFood/AddFood";
+import ManageMyFoods from "../Pages/ManageMyFoods/ManageMyFoods";
+import MyFoodRequest from "../Pages/MyFoodRequest/MyFoodRequest";
 
 
 const MainRoutes = createBrowserRouter([
@@ -18,6 +21,18 @@ const MainRoutes = createBrowserRouter([
       {
         path: "/AvailableFoods",
         element: <AvailableFoods></AvailableFoods>,
+      },
+      {
+        path: "/AddFood",
+        element: <AddFood></AddFood>,
+      },
+      {
+        path: "/ManageMyFoods",
+        element: <ManageMyFoods></ManageMyFoods>,
+      },
+      {
+        path: "/MyFoodRequest",
+        element: <MyFoodRequest></MyFoodRequest>,
       },
     ],
   },

@@ -39,9 +39,9 @@ const Navber = () => {
         <Navbar.Collapse>
           <NavLink to="/">Home</NavLink>
           <NavLink to="/AvailableFoods">Available Foods</NavLink>
-          <Navbar.Link href="AvailableFoods">Add Food</Navbar.Link>
-          <Navbar.Link href="#">Manage My Foods</Navbar.Link>
-          <Navbar.Link href="#">My Food Request</Navbar.Link>
+          <NavLink to="/AddFood">Add Food</NavLink>
+          <NavLink to="/ManageMyFoods">Manage My Foods</NavLink>
+          <NavLink to="/MyFoodRequest">My Food Request</NavLink>
         </Navbar.Collapse>
       </Navbar>
     </div>
