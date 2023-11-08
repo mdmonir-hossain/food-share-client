@@ -6,14 +6,14 @@ const Navber = () => {
   return (
     <div className="shadow-lg">
       <Navbar fluid rounded>
-        <Navbar.Brand href="https://flowbite-react.com">
+        <Navbar.Brand href="">
           <img
-            src="/favicon.svg"
+            src="https://i.ibb.co/nPwJkyQ/food-share.png"
             className="mr-3 h-6 sm:h-9"
-            alt="Flowbite React Logo"
+            alt=""
           />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Flowbite React
+          <span className=" text-sky-500 self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+            FOOD SHARE
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2">
