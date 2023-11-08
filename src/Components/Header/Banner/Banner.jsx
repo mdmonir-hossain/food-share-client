@@ -1,10 +1,10 @@
-import Carousel from "react-elastic-carousel";
+
 
 import { motion } from "framer-motion";
 const Banner = () => {
   return (
     <div>
-      <Carousel itemsToShow={1}>
+      
         <div className="flex justify-center items-center bg-banner relative ">
           <motion.div
             className=""
@@ -39,11 +39,7 @@ const Banner = () => {
             and Surplus Reduction Platform
           </motion.h1>
         </div>
-        <h1>gdfgd</h1>
-        <h1>gdfgd</h1>
-        <h1>gdfgd</h1>
-        <h1>gdfgd</h1>
-      </Carousel>
+        
     </div>
   );
 };

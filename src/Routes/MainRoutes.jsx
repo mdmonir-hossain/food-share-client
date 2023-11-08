@@ -6,6 +6,8 @@ import AvailableFoods from "../Pages/AvailableFoods/AvailableFoods";
 import AddFood from "../Pages/AddFood/AddFood";
 import ManageMyFoods from "../Pages/ManageMyFoods/ManageMyFoods";
 import MyFoodRequest from "../Pages/MyFoodRequest/MyFoodRequest";
+import Login from "../Pages/LogIn/Login";
+import SignUp from "../Pages/SignUp/SignUp";
 
 
 const MainRoutes = createBrowserRouter([
@@ -34,6 +36,15 @@ const MainRoutes = createBrowserRouter([
         path: "/MyFoodRequest",
         element: <MyFoodRequest></MyFoodRequest>,
       },
+      {
+        path: "/Login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/SignUp",
+        element: <SignUp></SignUp>,
+      },
+      
     ],
   },
 ]);
