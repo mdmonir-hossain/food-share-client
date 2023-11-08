@@ -1,20 +1,46 @@
 import { Helmet } from "react-helmet";
 import { Button, Label, TextInput } from "flowbite-react";
 import Lottie from "lottie-react";
+import { signInWithPopup } from "firebase/auth";
 import loginanimation from "../../assets/signin.json";
+import { motion } from "framer-motion";
+
+import { AuthContext } from "../../Provider/AuthProvider";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 const Login = () => {
+  const { auth, googleProvider, googleUserSignin, signOutUser } =
+    useContext(AuthContext);
+
+  const handleGoogleUserSingin = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 justify-center items-center">
       <Helmet>
         <title> Log in</title>
       </Helmet>
-      <div className="flex-1 lg:ml-3 lg:px-10 lg:py-20 justify-center items-center border-2  border-[#7BCCFF] rounded-lg ">
+      <motion.div
+        initial={{ y: "-100vh" }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", duration: 1, stiffness: 60 }}
+        className="flex-1 lg:ml-3 lg:px-10 lg:py-20 justify-center items-center border-2  border-[#7BCCFF] rounded-lg "
+      >
         <h1 className="text-3xl text-center">Log In</h1>
         <form className="flex max-w-md flex-col gap-4">
           <div>
             <div className="mb-2 block">
               <Label htmlFor="email1" value="Your email" />
+              
             </div>
+            
             <TextInput
               id="email1"
               type="email"
@@ -32,7 +58,11 @@ const Login = () => {
         </form>
         <hr className="w-3/4 mt-2" />
         <div className="flex gap-4 mt-2">
-          <Button className="btn w-1/3" color="gray">
+          <Button
+            className="btn w-1/3"
+            color="gray"
+            onClick={handleGoogleUserSingin}
+          >
             <svg
               class="w-6 h-6 text-gray-800 dark:text-white"
               aria-hidden="true"
@@ -63,10 +93,16 @@ const Login = () => {
             </svg>
           </Button>
         </div>
-      </div>
-      <div className="flex-1">
+        <div className="flex gap-4 mt-2">
+          <h1>Don't have Account?</h1>
+          <Link to="/SignUp" className="text-sky-500">
+            Sign UP
+          </Link>
+        </div>
+      </motion.div>
+      <motion.div className="flex-1">
         <Lottie animationData={loginanimation}></Lottie>
-      </div>
+      </motion.div>
     </div>
   );
 };

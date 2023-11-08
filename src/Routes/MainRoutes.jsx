@@ -35,11 +35,19 @@ const MainRoutes = createBrowserRouter([
       },
       {
         path: "/ManageMyFoods",
-        element: <ManageMyFoods></ManageMyFoods>,
+        element: (
+          <PrivateRoutes>
+            <ManageMyFoods></ManageMyFoods>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/MyFoodRequest",
-        element: <MyFoodRequest></MyFoodRequest>,
+        element: (
+          <PrivateRoutes>
+            <MyFoodRequest></MyFoodRequest>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/Login",

@@ -8,7 +8,7 @@ const ContactUs = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 justify-center items-center mt-10">
       <div className="flex-1 lg:ml-3 lg:px-10 lg:py-20 justify-center items-center ">
-        <h1 className="text-3xl text-center font-extrabold">Contact Us</h1>
+        <h1 className="text-3xl text-center font-extrabold text-sky-500">Contact Us</h1>
         <form className="flex max-w-md flex-col gap-4">
           <div>
             <div className="mb-2 block">
@@ -43,7 +43,7 @@ const ContactUs = () => {
               rows={4}
             />
           </div>
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className="bg-sky-500">Submit</Button>
         </form>
         <hr className="w-3/4 mt-2" />
       </div>

@@ -1,8 +1,21 @@
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Navber = () => {
-  
+  const { user, signOutUser } = useContext(AuthContext);
+ 
+
+  const handleSignOut = () => {
+    signOutUser()
+      .then(result => {
+        console.log(result.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <div className="shadow-lg">
       <Navbar fluid rounded>
@@ -17,31 +30,107 @@ const Navber = () => {
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2">
-          <Dropdown
-            arrowIcon={false}
-            inline
-            label={<Avatar alt="User settings" img="" rounded />}
-          >
-            <Dropdown.Header>
-              <span className="block text-sm">Bonnie Green</span>
-              <span className="block truncate text-sm font-medium">
-                name@flowbite.com
-              </span>
-            </Dropdown.Header>
-            <Dropdown.Item>Dashboard</Dropdown.Item>
-            <Dropdown.Item>Settings</Dropdown.Item>
-            <Dropdown.Item>Earnings</Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item>Sign out</Dropdown.Item>
-          </Dropdown>
+          {user ? (
+            <Dropdown
+              arrowIcon={false}
+              inline
+              label={
+                <Avatar alt="User settings" img={user?.photoURL} rounded />
+              }
+            >
+              <Dropdown.Header>
+                <span className="block text-sm">{user?.displayName}</span>
+                <span className="block truncate text-sm font-medium">
+                  {user?.email}
+                </span>
+              </Dropdown.Header>
+              <Dropdown.Item
+                onClick={handleSignOut}
+                className="bg-sky-500 text-white p-2 rounded-lg"
+              >
+                Sign out
+              </Dropdown.Item>
+            </Dropdown>
+          ) : (
+            <div>
+              <Link
+                to="/Login"
+                className="bg-sky-500 text-white p-2 rounded-lg"
+              >
+                Log in
+              </Link>{" "}
+              <Link
+                to="/SignUP"
+                className="bg-sky-500 text-white p-2 rounded-lg"
+              >
+                Sign Up
+              </Link>
+            </div>
+          )}
+
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/AvailableFoods">Available Foods</NavLink>
-          <NavLink to="/AddFood">Add Food</NavLink>
-          <NavLink to="/ManageMyFoods">Manage My Foods</NavLink>
-          <NavLink to="/MyFoodRequest">My Food Request</NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "border-b-2 border-sky-500"
+                : ""
+            }
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/AvailableFoods"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "border-b-2 border-sky-500"
+                : ""
+            }
+          >
+            Available Foods
+          </NavLink>
+          <NavLink
+            to="/AddFood"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "border-b-2 border-sky-500"
+                : ""
+            }
+          >
+            Add Food
+          </NavLink>
+          <NavLink
+            to="/ManageMyFoods"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "border-b-2 border-sky-500"
+                : ""
+            }
+          >
+            Manage My Foods
+          </NavLink>
+          <NavLink
+            to="/MyFoodRequest"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "border-b-2 border-sky-500"
+                : ""
+            }
+          >
+            My Food Request
+          </NavLink>
         </Navbar.Collapse>
       </Navbar>
     </div>

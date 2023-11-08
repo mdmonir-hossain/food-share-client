@@ -9,7 +9,7 @@ import "swiper/css/autoplay";
 const SuccessStories = () => {
     return (
       <div className="mt-10 space-y-8">
-        <h1 className="text-center text-3xl font-extrabold">
+        <h1 className="text-center text-3xl font-extrabold text-sky-500">
           
           Success Stories
         </h1>
