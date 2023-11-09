@@ -10,6 +10,7 @@ import Login from "../Pages/LogIn/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoutes from "./PrivateRoutes";
 import FoodDetails from "../Pages/FoodDetails/FoodDetails";
+import UpdateFood from "../Pages/UpadateFood/UpadateFood";
 
 
 const MainRoutes = createBrowserRouter([
@@ -44,11 +45,14 @@ const MainRoutes = createBrowserRouter([
       },
       {
         path: "/MyFoodRequest",
-        element: (
-          <PrivateRoutes>
+        element: <PrivateRoutes>
             <MyFoodRequest></MyFoodRequest>
-          </PrivateRoutes>
-        ),
+          </PrivateRoutes>,
+          loader: () =>
+          fetch(
+            `https://b8a11-server-side-xi.vercel.app/requestfood/`
+          ),
+        
       },
       {
         path: "/Login",
@@ -65,7 +69,17 @@ const MainRoutes = createBrowserRouter([
       </PrivateRoutes> ,
       loader: () =>
       fetch(
-        `http://localhost:5000/foodall/`
+        `https://b8a11-server-side-xi.vercel.app/foodall/`
+      ),
+      },
+      {
+        path: "/Updatefood/:_id",
+        element: <PrivateRoutes>
+        <UpdateFood></UpdateFood>
+      </PrivateRoutes> ,
+      loader: () =>
+      fetch(
+        `https://b8a11-server-side-xi.vercel.app/foodall/`
       ),
       },
     ],

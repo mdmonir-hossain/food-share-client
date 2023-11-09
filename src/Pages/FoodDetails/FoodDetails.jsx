@@ -13,10 +13,10 @@ function FoodDetails() {
         );
         setDetails(singlecard);
     }, [_id, detailsData]);
-    console.log(detailsid);
+    
 
     return (
-        <div>
+        <div className='grid justify-center gap-4'>
 
    <Singledetails detailsid={detailsid}></Singledetails>
 

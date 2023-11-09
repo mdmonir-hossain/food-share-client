@@ -1,7 +1,8 @@
 import { Button, Card } from 'flowbite-react'
+import { Link } from 'react-router-dom';
 
 function AvailableAllFoods({fooditemall}) {
-    const {additionalNotes,
+    const {_id,additionalNotes,
 
         donatorEmail,
         
@@ -54,7 +55,7 @@ function AvailableAllFoods({fooditemall}) {
           href="#"
           className="rounded-lg bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
         >
-         View Details
+         <Link to={`/food/${_id}`}>View Details</Link>
         </a>
       </div>
     </Card>

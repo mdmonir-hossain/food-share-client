@@ -5,54 +5,87 @@ import { Button, Label, TextInput, Select, Datepicker } from "flowbite-react";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { useLoaderData } from "react-router-dom";
 
-import Swal from "sweetalert2";
-import axios from "axios";
+function UpdateFood() {
+    const update = useLoaderData();
 
-const AddFood = () => {
-  const { user } = useContext(AuthContext);
+    const {_id,additionalNotes,
 
-  const handleAddFood = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const foodName = form.foodName.value;
-    const foodImage = form.foodImage.value;
-    const foodQuantity = form.foodQuantity.value;
-    const pickupLocation = form.pickupLocation.value;
-    const expiredDate = form.expiredDate.value;
-    const additionalNotes = form.additionalNotes.value;
-    const foodStatus = form.foodStatus.value;
+        donatorEmail,
+        
+        donatorImage,
+        
+        donatorName,
+        
+        expiredDate,
+        
+        foodImage,
+        
+        foodName,
+        
+        foodQuantity,
+        
+        foodStatus,
+        
+        pickupLocation
+        }=update;
 
-    const foodData = {
-      foodName,
-      foodImage,
-      foodQuantity,
-      pickupLocation,
-      expiredDate,
-      additionalNotes,
-      foodStatus,
-      donatorEmail: user?.email || "",
-      donatorName:user?.displayName || "",
-      donatorImage: user?.photoURL || ""
+    console.log(update);
 
-    };
-
+    const handleupdateFood = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const foodName = form.foodName.value;
+        const foodImage = form.foodImage.value;
+        const foodQuantity = form.foodQuantity.value;
+        const pickupLocation = form.pickupLocation.value;
+        const expiredDate = form.expiredDate.value;
+        const additionalNotes = form.additionalNotes.value;
+        const foodStatus = form.foodStatus.value;
     
-    axios.post('https://b8a11-server-side-xi.vercel.app/food',foodData)
-    .then(data=>{
-      if (data.data.insertedId) {
-              Swal.fire({
-                title: "Success!",
-                text: "Food Added Successfully",
-                icon: "success",
-                confirmButtonText: "Cool",
-              }) }
-    })
+        const foodData = {
+          foodName,
+          foodImage,
+          foodQuantity,
+          pickupLocation,
+          expiredDate,
+          additionalNotes,
+          foodStatus,
+          donatorEmail: user?.email || "",
+          donatorName:user?.displayName || "",
+          donatorImage: user?.photoURL || ""
     
-  };
-  console.log(user);
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 justify-center items-center">
+        };
+    
+        
+      
+        fetch(
+            `https://b8a11-server-side-xi.vercel.app/foodall/${_id}`,
+            {
+              method: "PUT",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(UpadteProductData),
+            }
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.modifiedCount) {
+                Swal.fire({
+                  title: "Success!",
+                  text: "Product Updated Successfully",
+                  icon: "success",
+                  confirmButtonText: "Cool",
+                });
+              }
+            });
+      };
+    return (
+        <div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 justify-center items-center">
       <Helmet>
         <title> Add Food</title>
       </Helmet>
@@ -63,9 +96,9 @@ const AddFood = () => {
         transition={{ duration: 1, type: "spring", stiffness: 60 }}
         className="flex-1 lg:ml-3 lg:px-10 lg:py-20 justify-center items-center  rounded-lg "
       >
-        <h1 className="text-3xl text-center">Add Food</h1>
+        <h1 className="text-3xl text-center">Update Food</h1>
         <form
-          onSubmit={handleAddFood}
+          onSubmit={handleupdateFood}
           className="flex max-w-md flex-col gap-4"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-2">
@@ -77,7 +110,7 @@ const AddFood = () => {
                 name="foodName"
                 id="name"
                 type="text"
-                placeholder="Food Name"
+                placeholder="Food Name" defaultValue={foodName}
                 required
               />
             </div>
@@ -89,7 +122,7 @@ const AddFood = () => {
                 name="foodImage"
                 id="foodImage"
                 type="text"
-                placeholder="food Image"
+                placeholder="food Image" defaultValue={foodImage}
                 required
               />
             </div>
@@ -104,7 +137,7 @@ const AddFood = () => {
                 name="foodQuantity"
                 id="foodQuantity"
                 type="number"
-                placeholder="food Quantity"
+                placeholder="food Quantity" defaultValue={foodQuantity}
                 required
               />
             </div>
@@ -112,7 +145,7 @@ const AddFood = () => {
               <div className="mb-2 block">
                 <Label htmlFor="pickupLocation" value="pickup Location" />
               </div>
-              <Select id="pickupLocation" name="pickupLocation" required>
+              <Select id="pickupLocation" name="pickupLocation" defaultValue={pickupLocation} required>
                 <option>Dhaka</option>
                 <option>Chittagong</option>
                 <option>Rajshahi</option>
@@ -131,14 +164,14 @@ const AddFood = () => {
                 name="expiredDate"
                 id="expiredDate"
                 type="date"
-                placeholder="Expired Date"
+                placeholder="Expired Date" defaultValue={expiredDate}
                 required
               />
               {/* <Datepicker name="expiredDate" /> */}
             </div>
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="additionalNotes" value="Additional Notes" />
+                <Label htmlFor="additionalNotes" value="Additional Notes" defaultValue={additionalNotes} />
               </div>
               <TextInput
                 id="additionalNotes"
@@ -154,7 +187,7 @@ const AddFood = () => {
               <div className="mb-2 block">
                 <Label htmlFor="foodStatus" value="Food Status" />
               </div>
-              <Select id="foodStatus" name="foodStatus" required>
+              <Select id="foodStatus" name="foodStatus" defaultValue={foodStatus} required>
                 <option value="Available">Available</option>
                 <option value="Delivered">Delivered</option>
               </Select>
@@ -173,7 +206,8 @@ const AddFood = () => {
         <Lottie animationData={add}></Lottie>
       </motion.div>
     </div>
-  );
-};
+        </div>
+    )
+}
 
-export default AddFood;
+export default UpdateFood

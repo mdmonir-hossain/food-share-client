@@ -10,7 +10,7 @@ function Foods() {
 
         queryKey: ['food'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/food');
+            const res = await fetch('https://b8a11-server-side-xi.vercel.app/food');
             return res.json();
         }
     })
