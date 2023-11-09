@@ -93,7 +93,7 @@ const AddFood = () => {
                 </div>
                 <TextInput
                   id="foodImage"
-                  type="text"
+                  type="url"
                   placeholder="Food Image"
                   name="foodImage"
                   required
