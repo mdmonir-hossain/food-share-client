@@ -103,7 +103,7 @@ const AddFood = () => {
               <TextInput
                 name="foodQuantity"
                 id="foodQuantity"
-                type="text"
+                type="number"
                 placeholder="food Quantity"
                 required
               />
