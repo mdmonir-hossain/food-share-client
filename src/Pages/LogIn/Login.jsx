@@ -56,7 +56,7 @@ const Login = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 justify-center items-center">
         <Helmet>
-          <title> Log in</title>
+          <title> Log in </title>
         </Helmet>
         <motion.div
           initial={{ y: "-100vh" }}

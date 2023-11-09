@@ -11,7 +11,7 @@ const FooterSection = () => {
     return (
       <div>
         <Footer container>
-          <div className="w-full">
+          <div className="w-full border-t-sky-500 border-t-[5px] ">
             <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
               <div>
                 <Footer.Brand

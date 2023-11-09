@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 
 const AvailableFoods = () => {
     return (
-      <div>
+      <div className="min-h-screen">
         <Helmet>
           <title>Available Foods</title>
         </Helmet>

@@ -17,7 +17,7 @@ const Navber = () => {
       });
   }
   return (
-    <div className="shadow-lg">
+    <div className="shadow-lg border-b-sky-500 border-b-[5px] ">
       <Navbar fluid rounded>
         <Navbar.Brand href="">
           <img
@@ -46,7 +46,7 @@ const Navber = () => {
               </Dropdown.Header>
               <Dropdown.Item
                 onClick={handleSignOut}
-                className="bg-sky-500 text-white p-2 rounded-lg"
+                className="bg-sky-500 text-white text-center hover:text-black p-2 rounded-lg"
               >
                 Sign out
               </Dropdown.Item>
@@ -55,13 +55,13 @@ const Navber = () => {
             <div>
               <Link
                 to="/Login"
-                className="bg-sky-500 text-white p-2 rounded-lg"
+                className="bg-sky-500 hover:text-black text-white p-2 rounded-lg"
               >
                 Log in
               </Link>{" "}
               <Link
                 to="/SignUP"
-                className="bg-sky-500 text-white p-2 rounded-lg"
+                className="bg-sky-500 hover:text-black text-white p-2 rounded-lg"
               >
                 Sign Up
               </Link>
