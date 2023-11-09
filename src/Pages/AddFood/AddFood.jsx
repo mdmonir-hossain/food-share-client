@@ -37,7 +37,7 @@ const AddFood = () => {
 
     };
 
-    console.log(foodData);
+    
     axios.post('http://localhost:5000/food',foodData)
     .then(data=>{
       if (data.data.insertedId) {
@@ -47,31 +47,8 @@ const AddFood = () => {
                 icon: "success",
                 confirmButtonText: "Cool",
               }) }
-
-      
     })
-    // fetch(
-    //   "http://localhost:5000/food",
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "content-type": "application/json",
-    //     },
-    //     body: JSON.stringify(foodData),
-    //   }
-    // )
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     if (data.insertedId) {
-    //       Swal.fire({
-    //         title: "Success!",
-    //         text: "Food Added Successfully",
-    //         icon: "success",
-    //         confirmButtonText: "Cool",
-    //       });
-    //     }
-    //   });
+    
   };
   console.log(user);
   return (
